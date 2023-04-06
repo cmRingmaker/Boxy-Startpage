@@ -1,0 +1,14 @@
+:root {
+  /* backgrounds */
+  --bg-color: rgb(94, 94, 94);
+
+  /* text */
+  --text: rgb(208, 208, 208);
+  --font: 1.5em /1 'Inter', Helvetica, system-ui, sans-serif;
+}
+
+body {
+  background: var(--bg-color);
+  color: var(--text);
+  font: var(--font);
+}
