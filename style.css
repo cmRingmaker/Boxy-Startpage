@@ -1,14 +1,51 @@
 :root {
   /* backgrounds */
-  --bg-color: rgb(94, 94, 94);
+  --main-bg: rgb(94, 94, 94);
+  --container-bg: rgb(63, 63, 63);
 
   /* text */
+  font-size: 62.5%; /* 62.5% of default browser 16px = 10px ... when writing rem sizes this means we write 2.6rem to represent 26px fonts, 1.3 for 13px, etc */
   --text: rgb(208, 208, 208);
-  --font: 1.5em /1 'Inter', Helvetica, system-ui, sans-serif;
+  --font: 2.6rem/1 'Inter', Helvetica, system-ui, sans-serif;
 }
 
-body {
-  background: var(--bg-color);
-  color: var(--text);
+html, body, #container {
+  display: flex;
+  gap: 5px;
+  background: var(--main-bg);
+  box-sizing: border-box;
   font: var(--font);
+  color: var(--text);
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+#menu, #hero, #tasks {
+  background: var(--container-bg);
+  overflow-wrap: break-word;
+}
+
+/* |----------------------------------| */
+/* |- - - - - SETTINGS  MENU - - - - -| */
+/* |----------------------------------| */
+
+#menu {
+  width: 20%;
+}
+
+/* |----------------------------------| */
+/* |- - - - - LINK CONTAINER - - - - -| */
+/* |----------------------------------| */
+
+#hero {
+  width: 60%;
+}
+
+/* |----------------------------------| */
+/* |- - - - - TODO/TASK LIST - - - - -| */
+/* |----------------------------------| */
+
+#tasks {
+  width: 20%;
 }
