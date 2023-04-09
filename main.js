@@ -5,6 +5,25 @@
 // add localstorage key value pairs to save hero section info
 // -----------------------
 
+function currentTime() {
+  let date = new Date()
+  let hh = date.getHours()
+  let mm = date.getMinutes()
+  let ampm = "AM"
+  
+  mm = (mm < 10) ? "0" + mm : mm
+  if (hh == 0) {hh = 12}
+  if (hh > 12) {
+      hh = hh - 12
+      ampm = "PM"
+   }
+
+  let time = `${hh}:${mm} ${ampm}`
+  document.getElementById("clock").innerText = time
+  //since there are no seconds being tracked, the clock is only updated every 20sec instead of 1sec for slight performance boost
+  setTimeout(currentTime, 20000)
+}
+
 //using commands such as /r /y /t ...etc the user can search directly on a given site
 function searchFunc() {
   const form = document.getElementById('formInput')
@@ -37,8 +56,8 @@ function searchFunc() {
       break; 
 
     case '/d ': //duck duck go
-    form.action = `https://duckduckgo.com/${actionInput}`
-    break;
+      form.action = `https://duckduckgo.com/${actionInput}`
+      break;
     
     // TODO : allow user to choose their default search
 
