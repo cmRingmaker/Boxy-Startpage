@@ -11,7 +11,8 @@ In addition, the startpage comes with a TODO/Task list that stays local to your 
 ### TODO:
 * build layout
 
-* build search bar
+* ~~*build search bar*~~ :heavy_check_mark:
+	* choose default search engine
 
 * build settings menu
 	* popout menu
@@ -35,3 +36,24 @@ In addition, the startpage comes with a TODO/Task list that stays local to your 
 * style with both dark and light mode
 * save options, links, and tasks to localstorage to keep current state of page
 * add a clock
+
+<hr></hr>
+
+## Using the Search Bar
+The search bar will allow you to quickly type anything you'd like and send you to google searches as a result. Currently there are shortcut commands to a few sites to search more than just google. To use the shortcuts you simply type the command before your search. e.g. "/r startpages" will redirect you to the subreddit for startpages.
+
+These commands include:
+
+**/d** *... DuckDuckGo*
+
+**/r** *... Reddit*
+
+**/y** *... YouTube*
+
+**/t** *... Twitter*
+
+**/s** *... Stack Overflow*
+
+>For Reddit results, it is sending you directly to subreddits and not actually using the Reddit search. This feature may come in the future if it's asked for, otherwise I'm intentionally leaving it as a redirect to a subreddit. If you do search with it, you can choose to use spaces or not. Searching for "/r start pages" will return the same result as "/r startpages"
+
+>For Twitter results, you can specifically choose to look for hashtags only or just a regular keyword search. For hashtags simply add a # like you would on twitter. "/t #doom" will get only the doom hashtag posts while "/t doom" will get any posts including the word doom.
