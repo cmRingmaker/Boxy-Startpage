@@ -6,6 +6,14 @@
 // add localstorage key value pairs to save hero section info
 // -----------------------
 
+const form = document.getElementById('formInput')
+const search = document.getElementById('searchInput')
+const searchToggle = document.querySelector('#searchBtn')
+const linksToggle = document.querySelector('#linksBtn')
+const todoToggle = document.querySelector('#todoBtn')
+const svg = document.querySelectorAll('.svgBtn')
+
+// Clock
 function currentTime() {
   let date = new Date()
   let hh = date.getHours()
@@ -27,8 +35,6 @@ function currentTime() {
 
 //using commands such as /r /y /t ...etc the user can search directly on a given site
 function searchFunc() {
-  const form = document.getElementById('formInput')
-  const search = document.getElementById('searchInput')
   const command = search.value.slice(0, 3).toLowerCase()
   const actionInput = search.value.slice(3)
 
@@ -68,10 +74,3 @@ function searchFunc() {
 }
 
 // TODO: add functionality to select icon above search bar to determine whether to use search, add a link, or add a task
-function changeInputForm() {
-  const form = document.getElementById('formInput')
-  const search = document.getElementById('searchInput')
-
-
-
-}
