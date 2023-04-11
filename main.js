@@ -1,3 +1,4 @@
+// TODO :
 // function to create a new div in order to add a new "container" to the hero section
 
 // function to ask user input to add links within the new containers
@@ -64,4 +65,13 @@ function searchFunc() {
     default: // by default we are set to google on the html form
       search.name = 'q'
   }
+}
+
+// TODO: add functionality to select icon above search bar to determine whether to use search, add a link, or add a task
+function changeInputForm() {
+  const form = document.getElementById('formInput')
+  const search = document.getElementById('searchInput')
+
+
+
 }

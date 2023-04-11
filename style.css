@@ -57,17 +57,30 @@ body {
   width: 60vw;
 }
 
-/* |----------------------------------| */
-/* |- - - - - TODO/TASK LIST - - - - -| */
-/* |----------------------------------| */
-
-#tasks {
-  width: 20vw;
+#clock  {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  font-size: 3.4rem;
 }
 
-/* |----------------------------------| */
-/* |- - - - - - SEARCH BAR - - - - - -| */
-/* |----------------------------------| */
+/* |- - - - SEARCH BAR - - - -| */
+#svgItems {
+  display: flex;
+  justify-content: flex-end;
+  fill: var(--text);
+  gap: 1.5rem;
+}
+
+.svgIcon:hover {
+  border-radius: 3px;
+  fill: rgb(209, 163, 163); /* temporary color */
+  background-color: rgba(168, 168, 168, 0.3); /* temporary color */
+}
+
+#search {
+  flex-grow: 1;
+}
 
 #search input {
   background: var(--container-bg);
@@ -75,8 +88,20 @@ body {
   font-size: 2.6rem;
   width: 500px;
   height: 50px;
-  padding-left: 10px;
-  margin-bottom: 50px;
+  padding-left: 20px;
   border: none;
   border-bottom: 1px dotted white;
+}
+
+/* |- - - - LINK SECTION - - - -| */
+#linkContainer {
+  flex-grow: 3;
+}
+
+/* |----------------------------------| */
+/* |- - - - - TODO/TASK LIST - - - - -| */
+/* |----------------------------------| */
+
+#tasks {
+  width: 20vw;
 }
