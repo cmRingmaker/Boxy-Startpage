@@ -9,6 +9,7 @@ In addition, the startpage comes with a TODO/Task list that stays local to your 
 <hr></hr>
 
 ### TODO:
+* setup demo site example
 * build layout
 * style with both dark and light mode
 * save options, links, and tasks to localstorage to keep current state of page
