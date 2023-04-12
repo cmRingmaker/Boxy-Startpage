@@ -1,10 +1,11 @@
 :root {
-  --main-bg: rgb(94, 94, 94);
-  --container-bg: rgb(63, 63, 63);
+  --container-bg: rgb(14, 12, 29);
+  --accented: rgb(40, 36, 59);
+  --greybox: #352a41;
 
   font-size: 62.5%; /* 62.5% of default browser 16px = 10px ... when writing rem sizes this means we write 2.6rem to represent 26px fonts, 1.3 for 13px, etc */
   --font: 2.2rem 'Inter', Helvetica, system-ui, sans-serif;
-  --text: rgb(208, 208, 208);
+  --text: rgb(211, 202, 255);
 }
 
 * {
@@ -21,7 +22,7 @@ h1, h2, h3, h4, h5 {
 }
 
 body {
-  background: var(--main-bg);
+  background: var(--accented);
   font: var(--font);
   color: var(--text);
   height: 100vh;
@@ -34,24 +35,24 @@ body {
 
 #menu, #hero, #tasks {
   display: flex;
+  flex-direction: column;
   background: var(--container-bg);
   height: 100vh;
 }
 
-/* |----------------------------------| */
-/* |- - - - - SETTINGS MENU  - - - - -| */
-/* |----------------------------------| */
+/* |------------------------------------| */
+/* | * * * * * SETTINGS MENU  * * * * * | */
+/* |------------------------------------| */
 
 #menu {
   width: 20vw;
 }
 
-/* |----------------------------------| */
-/* |- - - - - MID CONTAINER  - - - - -| */
-/* |----------------------------------| */
+/* |-----------------------------------| */
+/* | * * * * * MID CONTAINER * * * * * | */
+/* |-----------------------------------| */
 
 #hero {
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 60vw;
@@ -81,11 +82,11 @@ body {
 }
 
 .svgBtn:hover {
-  background-color: rgba(168, 168, 168, 0.3);
+  background-color: var(--greybox);
 }
 
 .active {
-  background: red;
+  background: var(--greybox);
 }
 
 #search {
@@ -94,13 +95,18 @@ body {
 
 #search input {
   background: var(--container-bg);
-  color: var(--font);
+  color: var(--text);
   font-size: 2.6rem;
   width: 500px;
   height: 50px;
   padding-left: 20px;
   border: none;
   border-bottom: 1px dotted white;
+  outline: none;
+}
+
+#search input:focus {
+  border-bottom: 1px solid var(--text);
 }
 
 /* |- - - - LINK SECTION - - - -| */
@@ -108,10 +114,27 @@ body {
   flex-grow: 3;
 }
 
-/* |----------------------------------| */
-/* |- - - - - TODO/TASK LIST - - - - -| */
-/* |----------------------------------| */
+/* |------------------------------------| */
+/* | * * * * * TODO/TASK LIST * * * * * | */
+/* |------------------------------------| */
 
 #tasks {
   width: 20vw;
+
+}
+
+#taskList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+
+#taskBody {
+  width: 100%;
+  align-items: center;
+}
+
+#todos {
+  margin-left: 20px;
 }
