@@ -16,7 +16,7 @@ In addition, the startpage comes with a TODO/Task list that stays local to your 
 * ~add a clock~ :heavy_check_mark:
 * ~~*build search bar*~~ :heavy_check_mark:
 	* choose default search engine
-	* add ability to toggle between search/add links/add tasks
+	* ~~add ability to toggle between search/add links/add tasks~~ :heavy_check_mark:
 
 * build settings menu
 	* popout menu
