@@ -10,9 +10,9 @@ In addition, the startpage comes with a TODO/Task list that stays local to your 
 
 ### TODO:
 * setup demo site example
-* build layout
+* ~~build layout~~ :heavy_check_mark:
 * style with both dark and light mode
-* save options, links, and tasks to localstorage to keep current state of page
+* ~~save options, links, and tasks to localstorage to keep current state of page~~ :heavy_check_mark:
 * ~add a clock~ :heavy_check_mark:
 * ~~*build search bar*~~ :heavy_check_mark:
 	* choose default search engine
@@ -31,7 +31,7 @@ In addition, the startpage comes with a TODO/Task list that stays local to your 
 
 	
 * build task list
-	* add tasks
+	* ~~add tasks~~ :heavy_check_mark:
 	* delete tasks
 	* edit tasks
 	* mark task complete
