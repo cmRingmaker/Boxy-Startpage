@@ -9,6 +9,8 @@ const linksToggle = document.querySelector('#linkBtn')
 const taskToggle = document.querySelector('#taskBtn')
 const toggleButton = document.querySelectorAll('.svgBtn')
 const tasks = document.querySelector('.tasks')
+const taskCount = document.querySelector('#taskCount')
+const deleteBtn = document.querySelector('#deleteTask')
 
 //Save Tasks in Local Storage
 const LS_TASK_KEY = 'TASKS'
@@ -162,7 +164,6 @@ function addLinks() {
     
     saveLinks.push(links)
     localStorage.setItem(LS_LINK_KEY, JSON.stringify(saveLinks))
-    console.log(`ADDED ${linkInput.value} TO LINK LOCALSTORAGE`)
     linkForm.reset()
   })
 }
@@ -174,6 +175,18 @@ function addLinks() {
 // |------------------------------|
 
 renderTasks()
+remainingTasks()
+
+// render task header... x of x tasks.
+function remainingTasks() {
+  const trueCount = saveTask.filter((task) => task.completed)
+  const taskPlural = saveTask.length === 1 ? 'Task' : 'Tasks'
+  if (trueCount.length === 0) {
+    taskCount.innerText = `${saveTask.length} ${taskPlural}`
+  } else {
+    taskCount.innerText = `${trueCount.length} of ${saveTask.length} ${taskPlural} Completed`
+  }
+}
 
 function addTasks() {
   searchForm.style.display = 'none'
@@ -187,17 +200,18 @@ function addTasks() {
     const task = {
       taskName: taskInput.value,
       completed: false,
-      id: Date.now().toString()
     }
     
     saveTask.push(task)
     localStorage.setItem(LS_TASK_KEY, JSON.stringify(saveTask))
-    console.log(`ADDED ${taskInput.value} TO TASK LOCALSTORAGE`)
     taskForm.reset() // reset fresh form every submit so user can't spam themselves by holding down enter
     renderTasks()
+    remainingTasks()
   })
 }
 
+
+// render tasks under the goals section, allow tasks to be edited and deleted
 function renderTasks() {
   tasks.innerHTML = ''
   saveTask.forEach((task) => {
@@ -241,25 +255,32 @@ function renderTasks() {
       } else {
         taskItem.classList.remove('completed')
       }
+
+    remainingTasks()
     })
 
 		edit.addEventListener('click', (e) => {
 			const taskInput = content.querySelector('input')
 			taskInput.removeAttribute('readonly')
-			taskInput.focus()
-      taskInput.setSelectionRange(1000, 1000)
+      taskInput.select()
 			taskInput.addEventListener('blur', (b) => {
-				taskInput.setAttribute('readonly', true)
+			  taskInput.setAttribute('readonly', true)
 				task.taskName = b.target.value
-        task.completed = false
 				localStorage.setItem(LS_TASK_KEY, JSON.stringify(saveTask))
 				renderTasks()
 			})
 		})
-
-
+    
   })
 }
+
+deleteBtn.addEventListener('click', (e) => {
+  saveTask = saveTask.filter((task) => !task.completed)
+  localStorage.setItem(LS_TASK_KEY, JSON.stringify(saveTask))
+  renderTasks()
+  remainingTasks()
+})
+
 
 
 // TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO 
@@ -270,8 +291,6 @@ function renderTasks() {
 // TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO 
 // TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO 
 // TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO 
-
-// finish functions to render tasks from the localstorage
 
 // write function to pull link ids from localstorage and connect them to link headers
 // e.g. new header/div named "Music" -> save a bandcamp link inside the Music div to display in hero/links section
