@@ -33,8 +33,8 @@ In addition, the startpage comes with a TODO/Task list that stays local to your 
 * build task list
 	* ~~add tasks~~ :heavy_check_mark:
 	* delete tasks
-	* edit tasks
-	* mark task complete
+	* ~~edit tasks~~ :heavy_check_mark:
+	* ~~mark task complete~~ :heavy_check_mark:
 	* add ability to track multiple types of tasks (weekly goals / daily goals)
 
 <hr></hr>
