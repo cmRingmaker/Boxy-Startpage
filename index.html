@@ -12,13 +12,13 @@
 
   <div id="container">
     <!-- ########## Settings Section-->
-    <section id="menu">
+    <section id="settings">
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
     </section>
 
 
     <!-- ########## Middle Section -->
-    <section id="hero">
+    <section id="middle">
       <div id="clock"></div>
 
       <div id="search">
@@ -63,43 +63,32 @@
     </section>
 
     <!-- ########## Task Section -->
-    <section id="tasks">
+    <section id="goals">
 
       <div id="taskList">
         <div id="taskHeader">
           <span id="taskCount">x of x tasks</span> <!-- TODO: add function to dynamically update # of tasks done/left -->
         </div>
   
-        <div id="taskBody" class="todos">
-          <!-- WHERE NEW TASKS GO -->
-
-
-  
-
-          <!-- This is a test div. This will be deleted and rendered in JS. -->
-          <div class="todoItem completed">
+        <div id="taskBody" class="tasks">
+          <!-- WHERE NEW TASKS GO. This section will only be rendered with JS. -->
+          <template class="taskItem">
             <label>
               <input type="checkbox">
-              <span class="checked"></span>
+              <span class="checked"></span> <!--custom checkbox-->
             </label>
 
-            <div class="todoContent">
-              <input type="text" value="This is a test div. To Be Deleted." readonly>
+            <div class="content">
+              <input type="text" value="This is where the content goes." readonly>
             </div>
 
-            <div id="taskButtons">
-              <button class="edit taskBtn"><svg width="28" height="28" viewBox="0 0 24 24">
-                <path d="M9 7h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3 M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3"/>
-                <line x1="16" y1="5" x2="19" y2="8" /></svg>
-              </button>
-
-            </div>
-          </div>
+            <button class="edit taskBtn"><svg width="28" height="28" viewBox="0 0 24 24">
+              <path d="M9 7h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3 M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3"/>
+              <line x1="16" y1="5" x2="19" y2="8" /></svg>
+            </button>
+          </template>
+          <!-- WHERE NEW TASKS GO. This section will only be rendered with JS. -->
         </div>
-        <!-- This is a test div. This will be deleted and rendered in JS. -->
-
-
-
 
 
         <!-- Delete Completed Tasks -->

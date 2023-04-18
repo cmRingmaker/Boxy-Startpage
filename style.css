@@ -35,7 +35,7 @@ body {
   gap: 5px;
 }
 
-#menu, #hero, #tasks {
+#settings, #middle, #goals {
   background: var(--container-bg);
   height: 100vh;
 }
@@ -44,7 +44,7 @@ body {
 /* | * * * * * SETTINGS MENU  * * * * * | */
 /* |------------------------------------| */
 
-#menu {
+#settings {
   width: 20vw;
 }
 
@@ -52,7 +52,7 @@ body {
 /* | * * * * * MID CONTAINER * * * * * | */
 /* |-----------------------------------| */
 
-#hero {
+#middle {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -129,14 +129,13 @@ body {
 /* | * * * * * TODO/TASK LIST * * * * * | */
 /* |------------------------------------| */
 
-#tasks {
+#goals {
   width: 20vw;
 }
 
 #taskList {
   display: flex;
   flex-direction: column;
-  /* background: teal; */
   align-items: center;
   padding-top: 30px;
   height: 100%;
@@ -164,12 +163,11 @@ input[type="checkbox"] {
   border: 2px solid var(--text);
   border-radius: var(--radius);
   cursor: pointer;
-  /* margin-left: 4px; */
 }
 
 .checked::after {
-  background: var(--text);
   content: '';
+  background: var(--text);
   display: block;
   width: 0;
   height: 0;
@@ -183,7 +181,7 @@ input:checked ~ .checked::after {
   opacity: 1;
 }
 
-.todos .todoItem {
+.tasks .taskItem {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -192,7 +190,7 @@ input:checked ~ .checked::after {
   margin: 4px 0;
 }
 
-.todoContent input {
+.content input {
   background: var(--accented);
   color: var(--text);
   font-size: 1.6rem;
@@ -200,6 +198,13 @@ input:checked ~ .checked::after {
   height: 40px;
   border: none;
   outline: none;
+}
+
+/* Control strikethrough when checking task complete */
+.taskItem.completed input {
+  color: rgba(211, 202, 255, 0.5);
+  text-decoration: line-through;
+  transition: 400ms ease-in-out;
 }
 
 .taskBtn {
@@ -248,24 +253,15 @@ input:checked ~ .checked::after {
   margin-bottom: 10px;
 }
 
-.completed .todoContent {
-  text-decoration: line-through;
-  color: red;
-}
-
-
-
-
-
 
 
 /* Support for screens at 1280x720 and smaller.. under that you are on your own */
 @media screen and (min-width: 1200px) and (max-width: 1780px) {
-  #hero {width: 58vw;}
-  #menu, #tasks {width: 21vw;}
+  #middle {width: 58vw;}
+  #settings, #goals {width: 21vw;}
 }
 
 @media screen and (min-width: 1200px) and (max-width: 1500px) {
-  #hero {width: 50vw;}
-  #menu, #tasks {width: 25vw;}
+  #middle {width: 50vw;}
+  #settings, #goals {width: 25vw;}
 }

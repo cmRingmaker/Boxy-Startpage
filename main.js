@@ -8,7 +8,7 @@ const searchToggle = document.querySelector('#searchBtn')
 const linksToggle = document.querySelector('#linkBtn')
 const taskToggle = document.querySelector('#taskBtn')
 const toggleButton = document.querySelectorAll('.svgBtn')
-const todos = document.querySelector('.todos')
+const tasks = document.querySelector('.tasks')
 
 //Save Tasks in Local Storage
 const LS_TASK_KEY = 'TASKS'
@@ -173,7 +173,7 @@ function addLinks() {
 // | * * TASK LIST FORM BEGIN * * | * * * * * * * * * * * * * * * * * *
 // |------------------------------|
 
-
+renderTasks()
 
 function addTasks() {
   searchForm.style.display = 'none'
@@ -194,9 +194,72 @@ function addTasks() {
     localStorage.setItem(LS_TASK_KEY, JSON.stringify(saveTask))
     console.log(`ADDED ${taskInput.value} TO TASK LOCALSTORAGE`)
     taskForm.reset() // reset fresh form every submit so user can't spam themselves by holding down enter
+    renderTasks()
   })
 }
 
+function renderTasks() {
+  tasks.innerHTML = ''
+  saveTask.forEach((task) => {
+    const taskItem = document.createElement('div')
+    taskItem.classList.add('taskItem')
+
+    const label = document.createElement('label')
+    const input = document.createElement('input')
+    const span = document.createElement('span')
+    const content = document.createElement('div')
+    const edit = document.createElement('button')
+
+    input.type = "checkbox"
+    input.checked = task.completed
+    span.classList.add('checked')
+    content.classList.add('content')
+    edit.classList.add('edit', 'taskBtn')
+
+    content.innerHTML = `<input type="text" value="${task.taskName}" readonly>`
+    edit.innerHTML = `<svg width="28" height="28" viewBox="0 0 24 24">
+    <path d="M9 7h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3 M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3"/>
+    <line x1="16" y1="5" x2="19" y2="8" /></svg>`
+
+    label.appendChild(input)
+    label.appendChild(span)
+    taskItem.appendChild(label)
+    taskItem.appendChild(content)
+    taskItem.appendChild(edit)
+    tasks.appendChild(taskItem)
+
+    if (task.completed) {
+      taskItem.classList.add('completed')
+    }
+
+    input.addEventListener('click', (e) => {
+      task.completed = e.target.checked
+      localStorage.setItem(LS_TASK_KEY, JSON.stringify(saveTask))
+
+      if (task.completed) {
+        taskItem.classList.add('completed')
+      } else {
+        taskItem.classList.remove('completed')
+      }
+    })
+
+		edit.addEventListener('click', (e) => {
+			const taskInput = content.querySelector('input')
+			taskInput.removeAttribute('readonly')
+			taskInput.focus()
+      taskInput.setSelectionRange(1000, 1000)
+			taskInput.addEventListener('blur', (b) => {
+				taskInput.setAttribute('readonly', true)
+				task.taskName = b.target.value
+        task.completed = false
+				localStorage.setItem(LS_TASK_KEY, JSON.stringify(saveTask))
+				renderTasks()
+			})
+		})
+
+
+  })
+}
 
 
 // TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO 
