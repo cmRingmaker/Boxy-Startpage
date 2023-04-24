@@ -1,8 +1,12 @@
 const searchForm = document.querySelector('#searchForm')
 const linkForm = document.querySelector('#linkForm')
+const urlForm = document.querySelector('#urlForm')
+const addToLinkSection = document.querySelector('#addSection')
+const addLinksAndURL = document.querySelector("#addLinkAndURL")
 const taskForm = document.querySelector('#taskForm')
 const searchInput = document.querySelector('#searchInput')
 const linkInput = document.querySelector('#linkInput')
+const urlInput = document.querySelector('#linkURL')
 const taskInput = document.querySelector('#taskInput')
 const searchToggle = document.querySelector('#searchBtn')
 const linksToggle = document.querySelector('#linkBtn')
@@ -96,6 +100,8 @@ function inputState() {
 function searchFunc() {
   searchForm.style.display = 'block' 
   linkForm.style.display = 'none'
+  urlForm.style.display = 'none'
+  addToLinkSection.style.display = 'none'
   taskForm.style.display = 'none'
 
   const command = searchInput.value.slice(0, 3).toLowerCase()
@@ -146,25 +152,31 @@ function searchFunc() {
 // |------------------------------|
 
 
-
+// allows submit button to save both link name and url to the same localstorage
 function addLinks() {
   searchForm.style.display = 'none'
   linkForm.style.display = 'block'
+  urlForm.style.display = 'block'
+  addToLinkSection.style.display = 'block'
   taskForm.style.display = 'none'
 
-  linkForm.addEventListener('submit', (e) => {
+
+  addLinksAndURL.addEventListener('click', (e) => {
     e.preventDefault()
-    if (linkInput.value === null || linkInput.value === '' || linkInput.value === ' ') return
-    
+    //do not allow blank forms to be submitted
+    if (linkInput.value === null || linkInput.value === '' || linkInput.value === ' ' ||
+        urlInput.value === null || urlInput.value === '' || urlInput.value === ' ') return
+
     const links = {
       linkName: linkInput.value,
-      // linkURL: linkUrl(),
+      linkURL: urlInput.value,
       id: Date.now().toString()
     }
-    
+
     saveLinks.push(links)
     localStorage.setItem(LS_LINK_KEY, JSON.stringify(saveLinks))
     linkForm.reset()
+    urlForm.reset()
   })
 }
 
@@ -191,6 +203,8 @@ function remainingTasks() {
 function addTasks() {
   searchForm.style.display = 'none'
   linkForm.style.display = 'none'
+  urlForm.style.display = 'none'
+  addToLinkSection.style.display = 'none'
   taskForm.style.display = 'block'
 
   taskForm.addEventListener('submit', (e) => {

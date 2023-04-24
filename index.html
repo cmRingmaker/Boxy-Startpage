@@ -48,8 +48,33 @@
 
         <form id="linkForm" action="" method="get">
           <input id="linkInput" type="text" autocomplete="off" placeholder="Link Name">
-          <!-- <input id="linkURL" type="text" autocomplete="off" placeholder="Link URL"> -->
         </form>
+
+        <form id="urlForm" action="" method="get">
+          <input id="linkURL" type="text" autocomplete="off" placeholder="Link URL">
+        </form>
+
+        <div id="addSection">
+          <!-- <span>+</span> -->
+
+          <div class="dropdown">
+            <nav>
+              <input id="toggle" type="checkbox" checked onclick="chooseLinkContainer()" >
+              <div class="addAndSubmit">
+                <span>++ Select what category to add to:</span> <button id="addLinkAndURL">Submit Forms</button>
+              </div>
+              <!-- <span>Add to Container</span> <button id="linkSubmit">Submit Forms</button> -->
+              <ul>
+                <li><a href="#">test1</a></li>
+                <li><a href="#">test2</a></li>
+                <li><a href="#">test3</a></li>
+                <li><a href="#">test4</a></li>
+              </ul>
+            </nav>
+            
+          </div>
+
+        </div>
 
         <form id="taskForm" action="" method="get">
           <input id="taskInput" type="text" autocomplete="off" placeholder="Add a Task...">

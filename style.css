@@ -119,7 +119,7 @@ body {
 }
 
 /* keep link/taskforms hidden until triggered with JS event handlers */
-#search #linkForm, #search #taskForm {
+#linkForm, #urlForm, #taskForm, #addSection {
   display: none;
 }
 
@@ -127,6 +127,32 @@ body {
 #linkContainer {
   flex-grow: 3;
 }
+
+#linkForm input, #urlForm input {
+  margin: 5px 0;
+  width: 500px;
+  height: 40px;
+}
+
+#addSection {
+  margin-top: 10px;
+  /* padding-left: 20px; */
+  background: var(--accented);
+}
+
+nav {
+  position: relative;
+}
+
+nav .addAndSubmit {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 20px;
+  margin-left: 20px;
+  font-weight: 200;
+}
+
 
 /* |------------------------------------| */
 /* | * * * * * TODO/TASK LIST * * * * * | */
