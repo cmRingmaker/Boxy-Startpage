@@ -26,8 +26,10 @@ In addition, the startpage comes with a TODO/Task list that stays local to your 
 	* edit main links area
 	
 * build main section for links
+	* dropdown menu to choose where to save links
 	* add new section (header)
 	* add links within section
+	* delete links within selected section
 
 	
 * ~~build task list~~ :heavy_check_mark:
