@@ -55,25 +55,25 @@
         </form>
 
         <div id="addSection">
-          <!-- <span>+</span> -->
-
-          <div class="dropdown">
             <nav>
-              <input id="toggle" type="checkbox" checked onclick="chooseLinkContainer()" >
-              <div class="addAndSubmit">
-                <span>++ Select what category to add to:</span> <button id="addLinkAndURL">Submit Forms</button>
-              </div>
-              <!-- <span>Add to Container</span> <button id="linkSubmit">Submit Forms</button> -->
-              <ul>
+              <label for="toggle">
+                <span class="dropdownSpan">Choose link container:</span>
+                <button id="btnAddLinkAndURL">Submit</button>
+              </label>
+
+              <input id="toggle" type="checkbox">
+
+              <ul class="dropdown">
                 <li><a href="#">test1</a></li>
                 <li><a href="#">test2</a></li>
                 <li><a href="#">test3</a></li>
                 <li><a href="#">test4</a></li>
+                <li><a href="#">test5</a></li>
+                <li><a href="#">test6</a></li>
+                <li><a href="#">test7</a></li>
+                <li><a href="#">test8</a></li>
               </ul>
             </nav>
-            
-          </div>
-
         </div>
 
         <form id="taskForm" action="" method="get">
@@ -82,8 +82,14 @@
 
       </div>
 
+      <!-- WHERE THE LINK CONTAINERS GO -->
       <div id="linkContainer">
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        <div id="addAndDeleteContainer">
+          <form id="containerForm" action="" method="get">
+            <input id="containerInput" type="text" autocomplete="off" placeholder="+ Add New Link Container">
+          </form>
+        </div>
+
       </div>
     </section>
 

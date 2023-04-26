@@ -65,7 +65,7 @@ body {
 #clock  {
   display: flex;
   align-items: center;
-  flex-grow: 1;
+  flex-basis: 15%;
   font-size: 3.4rem;
 }
 
@@ -99,10 +99,10 @@ body {
 }
 
 #search {
-  flex-grow: 1;
+  flex-basis: 30%;
 }
 
-#search input {
+#search input, #linkContainer input {
   background: var(--container-bg);
   color: var(--text);
   font-size: 2.6rem;
@@ -114,45 +114,113 @@ body {
   outline: none;
 }
 
-#search input:focus {
+#search input:focus, #linkContainer input:focus {
   border-bottom: 1px solid var(--text);
 }
 
 /* keep link/taskforms hidden until triggered with JS event handlers */
-#linkForm, #urlForm, #taskForm, #addSection {
+#linkForm, #urlForm, #taskForm, #addSection, #containerForm {
   display: none;
 }
 
 /* |- - - - LINK SECTION - - - -| */
 #linkContainer {
-  flex-grow: 3;
+  display: flex;
+  justify-content: center;
+  flex-basis: 55%;
+  width: 90%;
+  margin-bottom: 10px;
 }
 
 #linkForm input, #urlForm input {
-  margin: 5px 0;
   width: 500px;
-  height: 40px;
+  height: 50px;
+}
+
+#urlForm input {
+  margin: 10px 0;
 }
 
 #addSection {
   margin-top: 10px;
-  /* padding-left: 20px; */
   background: var(--accented);
+  border-radius: var(--radius);
 }
 
-nav {
-  position: relative;
-}
-
-nav .addAndSubmit {
+nav label {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-right: 20px;
-  margin-left: 20px;
-  font-weight: 200;
+  margin-left: 10px;
 }
 
+#btnAddLinkAndURL {
+  background: var(--text);
+  color: var(--accented);
+  font: var(--font);
+  border-radius: var(--radius);
+  border: none;
+  height: 40px;
+  width: 100px;
+  cursor: pointer;
+}
+
+#btnAddLinkAndURL:hover {
+  font-variant: small-caps;
+}
+
+/* Add Name and URL to specific category */
+.dropdownSpan {
+  font-variant : small-caps;
+  cursor : pointer;
+  user-select: none;
+}
+
+.dropdown {
+  clear: both;
+  position: fixed;
+  background: var(--purplebox);
+  width: 500px;
+  height: 0px;
+  overflow: hidden;
+  /* text-align: center; */
+  transition: 400ms ease;
+  border-bottom-left-radius: var(--radius);
+  border-bottom-right-radius: var(--radius);
+}
+
+.dropdown li a {
+  background: var(--accented);
+  padding-left: 20px;
+  margin-top: 4px;
+  color: var(--text);
+  display: block;
+}
+
+.dropdown li a:hover {
+  background: var(--purplebox);
+  padding-left: 25px;
+}
+
+#toggle {
+  position: absolute;
+  opacity: 0;
+  height: 0px;
+}
+
+#toggle:checked + .dropdown {
+  height: 300px;
+}
+
+
+
+/* |------------------------------------| */
+/* | * * * * * LINK CONTAINER * * * * * | */
+/* |------------------------------------| */
+
+#linkContainer input {
+  width: 400px;
+}
 
 /* |------------------------------------| */
 /* | * * * * * TODO/TASK LIST * * * * * | */
@@ -244,7 +312,6 @@ input:checked ~ .checked::after {
   background: var(--accented);
   border: none;
   fill: none;
-  /* transition: 300ms; */
 }
 
 .edit {

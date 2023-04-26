@@ -2,8 +2,9 @@ const searchForm = document.querySelector('#searchForm')
 const linkForm = document.querySelector('#linkForm')
 const urlForm = document.querySelector('#urlForm')
 const addToLinkSection = document.querySelector('#addSection')
-const addLinksAndURL = document.querySelector("#addLinkAndURL")
+const addLinkAndUrlBTN = document.querySelector("#btnAddLinkAndURL")
 const taskForm = document.querySelector('#taskForm')
+const containerForm = document.querySelector('#containerForm')
 const searchInput = document.querySelector('#searchInput')
 const linkInput = document.querySelector('#linkInput')
 const urlInput = document.querySelector('#linkURL')
@@ -103,6 +104,7 @@ function searchFunc() {
   urlForm.style.display = 'none'
   addToLinkSection.style.display = 'none'
   taskForm.style.display = 'none'
+  containerForm.style.display = 'none'
 
   const command = searchInput.value.slice(0, 3).toLowerCase()
   const actionInput = searchInput.value.slice(3)
@@ -159,9 +161,10 @@ function addLinks() {
   urlForm.style.display = 'block'
   addToLinkSection.style.display = 'block'
   taskForm.style.display = 'none'
+  containerForm.style.display = 'block'
 
 
-  addLinksAndURL.addEventListener('click', (e) => {
+  addLinkAndUrlBTN.addEventListener('click', (e) => {
     e.preventDefault()
     //do not allow blank forms to be submitted
     if (linkInput.value === null || linkInput.value === '' || linkInput.value === ' ' ||
@@ -177,6 +180,13 @@ function addLinks() {
     localStorage.setItem(LS_LINK_KEY, JSON.stringify(saveLinks))
     linkForm.reset()
     urlForm.reset()
+  })
+
+  //disable enter key for link inputs - force user to use the submit button to guarantee both links save
+  addLinkAndUrlBTN.addEventListener('keydown', (e) => {
+    if (e.keyCode === 13) {
+      e.preventDefault()
+    }    
   })
 }
 
@@ -206,6 +216,7 @@ function addTasks() {
   urlForm.style.display = 'none'
   addToLinkSection.style.display = 'none'
   taskForm.style.display = 'block'
+  containerForm.style.display = 'none'
 
   taskForm.addEventListener('submit', (e) => {
     e.preventDefault()
