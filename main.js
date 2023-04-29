@@ -5,9 +5,12 @@ const addToLinkSection = document.querySelector('#addSection')
 const addLinkAndUrlBTN = document.querySelector("#btnAddLinkAndURL")
 const taskForm = document.querySelector('#taskForm')
 const containerForm = document.querySelector('#containerForm')
+const delContainer = document.querySelector('#delContainer')
 const searchInput = document.querySelector('#searchInput')
 const linkInput = document.querySelector('#linkInput')
 const urlInput = document.querySelector('#linkURL')
+const containerInput = document.querySelector('#containerInput')
+const delContainerInput = document.querySelector('#delContainerInput')
 const taskInput = document.querySelector('#taskInput')
 const searchToggle = document.querySelector('#searchBtn')
 const linksToggle = document.querySelector('#linkBtn')
@@ -26,6 +29,10 @@ const LS_LINK_KEY = 'LINKS'
 const LS_LINKHEAD_KEY = 'LINKS.SECTION.ID'
 let saveLinks = JSON.parse(localStorage.getItem(LS_LINK_KEY)) || []
 let selectedLinkId = localStorage.getItem(LS_LINKHEAD_KEY)
+
+//Save Links Container in Local Storage
+const LS_CONTAINER_KEY = 'containers'
+let saveContainer = JSON.parse(localStorage.getItem(LS_CONTAINER_KEY)) || []
 
 
 // Clock
@@ -79,6 +86,7 @@ function inputState() {
     // CONTROLS ADDING LINKS TO PAGE
     case linksToggle.classList.contains('active'):
       addLinks()
+      newLinkSection()
       break;
 
     // CONTROLS ADDING TASKS TO TASKLIST
@@ -105,6 +113,7 @@ function searchFunc() {
   addToLinkSection.style.display = 'none'
   taskForm.style.display = 'none'
   containerForm.style.display = 'none'
+  delContainer.style.display = 'none'
 
   const command = searchInput.value.slice(0, 3).toLowerCase()
   const actionInput = searchInput.value.slice(3)
@@ -162,6 +171,7 @@ function addLinks() {
   addToLinkSection.style.display = 'block'
   taskForm.style.display = 'none'
   containerForm.style.display = 'block'
+  delContainer.style.display = 'block'
 
 
   addLinkAndUrlBTN.addEventListener('click', (e) => {
@@ -187,6 +197,24 @@ function addLinks() {
     if (e.keyCode === 13) {
       e.preventDefault()
     }    
+  })
+}
+
+function newLinkSection() {
+  containerForm.addEventListener('submit', (e) => {
+    e.preventDefault()
+    if (containerInput.value === null || containerInput.value === '' || containerInput.value === ' ') return
+
+    const linkContainer = {
+      cName: containerInput.value,
+      linkName: '',
+      linkUrl: ''
+      // id: Date.now().toString()
+    }
+
+    saveContainer.push(linkContainer)
+    localStorage.setItem(LS_CONTAINER_KEY, JSON.stringify(saveContainer))
+    containerForm.reset()
   })
 }
 
@@ -217,6 +245,7 @@ function addTasks() {
   addToLinkSection.style.display = 'none'
   taskForm.style.display = 'block'
   containerForm.style.display = 'none'
+  delContainer.style.display = 'none'
 
   taskForm.addEventListener('submit', (e) => {
     e.preventDefault()

@@ -72,6 +72,10 @@
                 <li><a href="#">test6</a></li>
                 <li><a href="#">test7</a></li>
                 <li><a href="#">test8</a></li>
+                <li><a href="#">test9</a></li>
+                <li><a href="#">test10</a></li>
+                <li><a href="#">test11</a></li>
+                <li><a href="#">test12</a></li>
               </ul>
             </nav>
         </div>
@@ -84,9 +88,28 @@
 
       <!-- WHERE THE LINK CONTAINERS GO -->
       <div id="linkContainer">
-        <div id="addAndDeleteContainer">
+
+        <template id="itemContainer">
+          <div class="conItem">
+            <h1 class="linkHeader">Header Boi</h1>
+            <ul>
+              <li>test1</li>
+              <li>test2</li>
+              <li>test3</li>
+              <li>test4</li>
+              <li>test5</li>
+              <li>test6</li>
+              <li>test7</li>
+            </ul>
+          </div>
+        </template>
+
+        <div id="addOrDel">
           <form id="containerForm" action="" method="get">
-            <input id="containerInput" type="text" autocomplete="off" placeholder="+ Add New Link Container">
+            <input id="containerInput" type="text" autocomplete="off" placeholder="Add Container">
+          </form>
+          <form id="delContainer" action="" method="get">
+            <input id="delContainerInput" type="text" autocomplete="off" placeholder="Delete Container">
           </form>
         </div>
 

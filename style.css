@@ -1,6 +1,7 @@
 :root {
   --container-bg: rgb(14, 12, 29);
   --accented: rgb(40, 36, 59);
+  --accented-hover: rgba(40, 36, 59, 0.8);
   --purplebox: rgb(53, 42, 65);
 
   /* 62.5% of default browser 16px = 10px ... when writing rem sizes this means we write 2.6rem to represent 26px fonts, 1.3 for 13px, .5 for 5px, etc */
@@ -25,6 +26,11 @@ body {
   font: var(--font);
   color: var(--text);
   height: 100vh;
+}
+
+h1 {
+  font: var(--font);
+  color: var(--text);
 }
 
 /* different highlight for entire page */
@@ -65,7 +71,7 @@ body {
 #clock  {
   display: flex;
   align-items: center;
-  flex-basis: 15%;
+  flex-basis: 5%;
   font-size: 3.4rem;
 }
 
@@ -99,7 +105,7 @@ body {
 }
 
 #search {
-  flex-basis: 30%;
+  flex-basis: 25%;
 }
 
 #search input, #linkContainer input {
@@ -119,19 +125,11 @@ body {
 }
 
 /* keep link/taskforms hidden until triggered with JS event handlers */
-#linkForm, #urlForm, #taskForm, #addSection, #containerForm {
+#linkForm, #urlForm, #taskForm, #addSection, #containerForm, #delContainer {
   display: none;
 }
 
 /* |- - - - LINK SECTION - - - -| */
-#linkContainer {
-  display: flex;
-  justify-content: center;
-  flex-basis: 55%;
-  width: 90%;
-  margin-bottom: 10px;
-}
-
 #linkForm input, #urlForm input {
   width: 500px;
   height: 50px;
@@ -174,6 +172,7 @@ nav label {
   font-variant : small-caps;
   cursor : pointer;
   user-select: none;
+  border-bottom: 1px dotted white;
 }
 
 .dropdown {
@@ -183,10 +182,8 @@ nav label {
   width: 500px;
   height: 0px;
   overflow: hidden;
-  /* text-align: center; */
   transition: 400ms ease;
-  border-bottom-left-radius: var(--radius);
-  border-bottom-right-radius: var(--radius);
+  border-radius: var(--radius);
 }
 
 .dropdown li a {
@@ -209,7 +206,8 @@ nav label {
 }
 
 #toggle:checked + .dropdown {
-  height: 300px;
+  min-height: 300px;
+  overflow: auto;
 }
 
 
@@ -218,8 +216,70 @@ nav label {
 /* | * * * * * LINK CONTAINER * * * * * | */
 /* |------------------------------------| */
 
-#linkContainer input {
-  width: 400px;
+
+/* SWITCH FROM FLEX TO GRID */
+#linkContainer {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 70%;
+  width: 90%;
+  margin-bottom: 10px;
+}
+
+#itemContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: auto;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.conItem {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 180px;
+  height: 270px;
+  border-radius: var(--radius);
+  background: var(--accented);
+}
+
+.conItem:hover {
+  background: var(--accented-hover);
+}
+
+.conItem .linkHeader {
+  text-align: center;
+  display: block;
+  width: 100%;
+  border-top-left-radius: var(--radius);
+  border-top-right-radius: var(--radius);
+  background: var(--purplebox);
+}
+
+.conItem ul li {
+  margin-top: 4px;
+}
+
+#linkContainer:last-child {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#addOrDel {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-self: flex-end;
+}
+
+#addOrDel input {
+  width: 200px;
+  height: 40px;
+  font-size: var(--font);
 }
 
 /* |------------------------------------| */
@@ -363,4 +423,21 @@ input:checked ~ .checked::after {
   #middle {width: 50vw;}
   #settings, #goals {width: 25vw;}
   #taskHeader {font-size: 2.3rem;}
-} 
+  #linkContainer {width: 100%;}
+}
+
+@media screen and (min-height: 721px) and (max-height: 1079px) {
+  .conItem {height: 200px; width: 160px;}
+  .conItem .linkHeader {font-size: 1.7rem;}
+  #itemContainer {gap: 6px;}
+  .conItem ul li { margin-top: 1.8px; font-size: 1.8rem;}
+  #urlForm input {margin: 0;}
+ }
+
+@media screen and (min-height: 400px) and (max-height: 720px) {
+ .conItem {height: 172px; width: 130px;}
+ .conItem .linkHeader {font-size: 1.6rem;}
+ #itemContainer {gap: 6px;}
+ .conItem ul li { margin-top: 1.5px; font-size: 1.4rem;}
+ #urlForm input, #linkContainer {margin: 0;}
+}
