@@ -28,7 +28,7 @@ body {
   height: 100vh;
 }
 
-h1 {
+h1, h2, h3, h4 {
   font: var(--font);
   color: var(--text);
 }
@@ -226,7 +226,7 @@ nav label {
   margin-bottom: 10px;
 }
 
-#itemContainer {
+.links {
   width: 100%;
   display: flex;
   align-items: center;
@@ -429,7 +429,7 @@ input:checked ~ .checked::after {
 @media screen and (min-height: 721px) and (max-height: 1079px) {
   .conItem {height: 200px; width: 160px;}
   .conItem .linkHeader {font-size: 1.7rem;}
-  #itemContainer {gap: 6px;}
+  .links {gap: 6px;}
   .conItem ul li { margin-top: 1.8px; font-size: 1.8rem;}
   #urlForm input {margin: 0;}
  }
@@ -437,7 +437,7 @@ input:checked ~ .checked::after {
 @media screen and (min-height: 400px) and (max-height: 720px) {
  .conItem {height: 172px; width: 130px;}
  .conItem .linkHeader {font-size: 1.6rem;}
- #itemContainer {gap: 6px;}
+ .links {gap: 6px;}
  .conItem ul li { margin-top: 1.5px; font-size: 1.4rem;}
  #urlForm input, #linkContainer {margin: 0;}
 }

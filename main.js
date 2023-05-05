@@ -9,6 +9,8 @@ const delContainer = document.querySelector('#delContainer')
 const searchInput = document.querySelector('#searchInput')
 const linkInput = document.querySelector('#linkInput')
 const urlInput = document.querySelector('#linkURL')
+const toggle = document.querySelector('#toggle')
+const dropdown = document.querySelector('.dropdown')
 const containerInput = document.querySelector('#containerInput')
 const delContainerInput = document.querySelector('#delContainerInput')
 const taskInput = document.querySelector('#taskInput')
@@ -19,6 +21,7 @@ const toggleButton = document.querySelectorAll('.svgBtn')
 const tasks = document.querySelector('.tasks')
 const taskCount = document.querySelector('#taskCount')
 const deleteBtn = document.querySelector('#deleteTask')
+const links = document.querySelector('.links')
 
 //Save Tasks in Local Storage
 const LS_TASK_KEY = 'TASKS'
@@ -208,15 +211,61 @@ function newLinkSection() {
     const linkContainer = {
       cName: containerInput.value,
       linkName: '',
-      linkUrl: ''
-      // id: Date.now().toString()
+      linkUrl: '',
+      id: Date.now().toString()
     }
 
     saveContainer.push(linkContainer)
     localStorage.setItem(LS_CONTAINER_KEY, JSON.stringify(saveContainer))
     containerForm.reset()
+    renderContainers()
   })
 }
+
+function dropdownText() {
+  dropdown.innerHTML = ''
+  saveContainer.forEach((container) => {
+    const listEle = document.createElement('li')
+    listEle.innerHTML = `<a href ="#">${container.cName}</a>`
+    dropdown.appendChild(listEle)
+  })
+}
+
+// render container names in dropdown menu
+toggle.addEventListener('click', (e) => {
+  dropdownText()
+})
+
+// if clicking outside of the dropdown menu, close it
+window.addEventListener('click', (e) => {
+  if (e.target !== toggle) {
+    toggle.checked = false
+  }
+})
+
+//
+function renderContainers() {
+  links.innerHTML = ''
+  saveContainer.forEach((container) => {
+    const conItem = document.createElement('div')
+    conItem.classList.add('conItem')
+
+    const header = document.createElement('h2')
+    const unordered = document.createElement('ul')
+    const ulist = document.createElement('li')
+    
+    header.classList.add('linkHeader')
+    header.innerHTML = `${container.cName}`
+    ulist.innerHTML = `<a href="${container.linkUrl}">${container.linkName}</a>`
+
+    unordered.appendChild(ulist)
+    conItem.appendChild(header)
+    conItem.appendChild(unordered)
+    links.appendChild(conItem)
+  })
+}
+
+renderContainers()
 
 
 
