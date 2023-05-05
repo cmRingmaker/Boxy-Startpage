@@ -27,7 +27,7 @@ In addition, the startpage comes with a TODO/Task list that stays local to your 
 	
 * build main section for links
 	* dropdown menu to choose where to save links
-	* add new section (header)
+	* ~~add new containers~~ :heavy_check_mark:
 	* add links within section
 	* delete links within selected section
 
