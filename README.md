@@ -13,7 +13,7 @@ In addition, the startpage comes with a TODO/Task list that stays local to your 
 * ~~build layout~~ :heavy_check_mark:
 * style with both dark and light mode
 * ~~save options, links, and tasks to localstorage to keep current state of page~~ :heavy_check_mark:
-* ~add a clock~ :heavy_check_mark:
+* ~~add a clock~~ :heavy_check_mark:
 * ~~*build search bar*~~ :heavy_check_mark:
 	* choose default search engine
 	* ~~add ability to toggle between search/add links/add tasks~~ :heavy_check_mark:
@@ -26,9 +26,9 @@ In addition, the startpage comes with a TODO/Task list that stays local to your 
 	* edit main links area
 	
 * build main section for links
-	* dropdown menu to choose where to save links
+	* ~~dropdown menu to choose where to save links~~ :heavy_check_mark:
 	* ~~add new containers~~ :heavy_check_mark:
-	* add links within section
+	* ~~add links within section~~ :heavy_check_mark:
 	* delete links within selected section
 
 	
