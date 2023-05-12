@@ -22,6 +22,7 @@ const tasks = document.querySelector('.tasks')
 const taskCount = document.querySelector('#taskCount')
 const deleteBtn = document.querySelector('#deleteTask')
 const links = document.querySelector('.links')
+const selectLink = document.querySelector('#select')
 
 //Save Tasks in Local Storage
 const LS_TASK_KEY = 'TASKS'
@@ -90,6 +91,7 @@ function inputState() {
     case linksToggle.classList.contains('active'):
       addLinks()
       newLinkSection()
+      dropdownText()
       break;
 
     // CONTROLS ADDING TASKS TO TASKLIST
@@ -176,33 +178,44 @@ function addLinks() {
   containerForm.style.display = 'block'
   delContainer.style.display = 'block'
 
-
+// button to submit the name and url form to save links
   addLinkAndUrlBTN.addEventListener('click', (e) => {
     e.preventDefault()
     //do not allow blank forms to be submitted
     if (linkInput.value === null || linkInput.value === '' || linkInput.value === ' ' ||
         urlInput.value === null || urlInput.value === '' || urlInput.value === ' ') return
 
-    const links = {
-      linkName: linkInput.value,
-      linkURL: urlInput.value,
-      id: Date.now().toString()
-    }
+    // compare selected id to container id and save url to render in their respective containers
+    let linkAndUrl = `<a href="//${urlInput.value}">${linkInput.value}</a>`
 
-    saveLinks.push(links)
-    localStorage.setItem(LS_LINK_KEY, JSON.stringify(saveLinks))
+    saveContainer.forEach((container) => {
+      if(container.id === selectLink.value) {
+        container.urls.push(linkAndUrl)
+        localStorage.setItem(LS_CONTAINER_KEY, JSON.stringify(saveContainer))
+        console.log(`pushed ${selectLink.innerHTML} to ${container.cName}`)
+      }
+    })
+
     linkForm.reset()
     urlForm.reset()
+    renderContainers()
   })
 
-  //disable enter key for link inputs - force user to use the submit button to guarantee both links save
-  addLinkAndUrlBTN.addEventListener('keydown', (e) => {
+  //disable enter key for link name and url input - force user to use the submit button to guarantee both links save
+  linkInput.addEventListener('keydown', (e) => {
     if (e.keyCode === 13) {
       e.preventDefault()
-    }    
+    }
+  })
+
+  urlInput.addEventListener('keydown', (e) => {
+    if (e.keyCode === 13) {
+      e.preventDefault()
+    }
   })
 }
 
+// Add Container data, to save name of container to localstorage
 function newLinkSection() {
   containerForm.addEventListener('submit', (e) => {
     e.preventDefault()
@@ -210,40 +223,34 @@ function newLinkSection() {
 
     const linkContainer = {
       cName: containerInput.value,
-      linkName: '',
-      linkUrl: '',
-      id: Date.now().toString()
+      id: Date.now().toString(),
+      urls: [] // save array of urls to a specific container
     }
 
     saveContainer.push(linkContainer)
     localStorage.setItem(LS_CONTAINER_KEY, JSON.stringify(saveContainer))
     containerForm.reset()
     renderContainers()
+    dropdownText() // update dropdown if new containers are added
   })
 }
 
+// get container names to display in dropdown menu
 function dropdownText() {
-  dropdown.innerHTML = ''
+  if (selectLink.length > 1) {
+    selectLink.innerHTML = ''
+  }
+
   saveContainer.forEach((container) => {
-    const listEle = document.createElement('li')
-    listEle.innerHTML = `<a href ="#">${container.cName}</a>`
-    dropdown.appendChild(listEle)
+    const listEle = document.createElement('option')
+    listEle.value = container.id
+    listEle.innerHTML = container.cName
+    listEle.selected = true // set most recently created container to be the currently selected dropdown option
+    selectLink.appendChild(listEle)
   })
 }
 
-// render container names in dropdown menu
-toggle.addEventListener('click', (e) => {
-  dropdownText()
-})
-
-// if clicking outside of the dropdown menu, close it
-window.addEventListener('click', (e) => {
-  if (e.target !== toggle) {
-    toggle.checked = false
-  }
-})
-
-//
+// render containers and everything added to them
 function renderContainers() {
   links.innerHTML = ''
   saveContainer.forEach((container) => {
@@ -251,14 +258,20 @@ function renderContainers() {
     conItem.classList.add('conItem')
 
     const header = document.createElement('h2')
-    const unordered = document.createElement('ul')
-    const ulist = document.createElement('li')
-    
     header.classList.add('linkHeader')
     header.innerHTML = `${container.cName}`
-    ulist.innerHTML = `<a href="${container.linkUrl}">${container.linkName}</a>`
 
-    unordered.appendChild(ulist)
+    const unordered = document.createElement('ul')
+
+    // loop through the URLS to display them 
+    for (let i = 0; i < container.urls.length; i++) {
+      // create the li within the loop so multiple can render
+      const ulist = document.createElement('li')
+      ulist.innerHTML = container.urls[i]
+      console.log(`${typeof container.urls[i]} .... ${container.urls[i]}`)
+      unordered.appendChild(ulist)
+    }
+    
     conItem.appendChild(header)
     conItem.appendChild(unordered)
     links.appendChild(conItem)
@@ -395,7 +408,6 @@ deleteBtn.addEventListener('click', (e) => {
 // TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO 
 // TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO 
 
-// write function to pull link ids from localstorage and connect them to link headers
-// e.g. new header/div named "Music" -> save a bandcamp link inside the Music div to display in hero/links section
+// make the ability to edit or delete link urls inside of containers
 
 // write a menu for some defaults the user can set

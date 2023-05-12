@@ -54,20 +54,15 @@
           <input id="linkURL" type="text" autocomplete="off" placeholder="Link URL">
         </form>
 
+        <!-- DROPDOWN ON LINKS PAGES -->
         <div id="addSection">
-            <nav>
-              <label for="toggle">
-                <span class="dropdownSpan">Choose link container:</span>
-                <button id="btnAddLinkAndURL">Submit</button>
-              </label>
+          <select name="select" id="select">
+            <option selected disabled>Choose Link Container</option>
+          </select>
 
-              <input id="toggle" type="checkbox">
-
-              <ul class="dropdown">
-                <!-- display container names here as a list -->
-              </ul>
-            </nav>
+          <button id="btnAddLinkAndURL">Submit</button>
         </div>
+
 
         <form id="taskForm" action="" method="get">
           <input id="taskInput" type="text" autocomplete="off" placeholder="Add a Task...">

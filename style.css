@@ -140,16 +140,9 @@ h1, h2, h3, h4 {
 }
 
 #addSection {
-  margin-top: 10px;
+  margin: 10px 0;
   background: var(--accented);
   border-radius: var(--radius);
-}
-
-nav label {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-left: 10px;
 }
 
 #btnAddLinkAndURL {
@@ -158,58 +151,34 @@ nav label {
   font: var(--font);
   border-radius: var(--radius);
   border: none;
-  height: 40px;
-  width: 100px;
+  height: 35px;
+  width: 19%;
   cursor: pointer;
 }
 
 #btnAddLinkAndURL:hover {
-  font-variant: small-caps;
+  box-shadow: inset;
 }
 
-/* Add Name and URL to specific category */
-.dropdownSpan {
-  font-variant : small-caps;
-  cursor : pointer;
-  user-select: none;
-  border-bottom: 1px dotted white;
-}
-
-.dropdown {
-  clear: both;
-  position: fixed;
-  background: var(--purplebox);
-  width: 500px;
-  height: 0px;
-  overflow: hidden;
-  transition: 400ms ease;
-  border-radius: var(--radius);
-}
-
-.dropdown li a {
+/* Add Name and URL to specific container */
+#select {
+  cursor: pointer;
+  width: 79%;
+  height: 35px;
   background: var(--accented);
-  padding-left: 20px;
-  margin-top: 4px;
   color: var(--text);
-  display: block;
-}
-
-.dropdown li a:hover {
-  background: var(--purplebox);
+  font-size: var(--font);
+  border: none;
   padding-left: 25px;
 }
 
-#toggle {
-  position: absolute;
-  opacity: 0;
-  height: 0px;
+option {
+  background: var(--purplebox);
 }
 
-#toggle:checked + .dropdown {
-  min-height: 300px;
-  overflow: auto;
+select option:disabled {
+  font-size: 1.6rem;
 }
-
 
 
 /* |------------------------------------| */
@@ -285,6 +254,7 @@ nav label {
 /* |------------------------------------| */
 /* | * * * * * TODO/TASK LIST * * * * * | */
 /* |------------------------------------| */
+
 
 #goals {
   width: 20vw;
