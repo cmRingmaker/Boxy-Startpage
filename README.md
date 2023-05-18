@@ -30,6 +30,7 @@ In addition, the startpage comes with a TODO/Task list that stays local to your 
 	* ~~add new containers~~ :heavy_check_mark:
 	* ~~add links within section~~ :heavy_check_mark:
 	* delete links within selected section
+	* edit links within selected section
 
 	
 * ~~build task list~~ :heavy_check_mark:
