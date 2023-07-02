@@ -13,7 +13,7 @@ In addition, the startpage comes with a TODO/Task list that stays local to your 
 ## Using the Search Bar
 The search bar will allow you to quickly type anything you'd like and send you to google searches as a result. Currently there are shortcut commands to a few sites to search more than just google. To use the shortcuts you simply type the command before your search. e.g. "/r startpages" will redirect you to the subreddit for startpages.
 
-These commands include:
+These commands include: 
 
 **/d** *... DuckDuckGo*
 
