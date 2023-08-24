@@ -192,7 +192,7 @@ function addLinks() {
       if(container.id === selectLink.value) {
         container.urls.push(linkAndUrl)
         localStorage.setItem(LS_CONTAINER_KEY, JSON.stringify(saveContainer))
-        console.log(`pushed ${selectLink.innerHTML} to ${container.cName}`)
+        // console.log(`pushed ${selectLink.innerHTML} to ${container.cName}`)
       }
     })
 
@@ -238,13 +238,13 @@ function newLinkSection() {
 // get container names to display in dropdown menu
 function dropdownText() {
   if (selectLink.length > 1) {
-    selectLink.innerHTML = ''
+    selectLink.innerText = ''
   }
 
   saveContainer.forEach((container) => {
     const listEle = document.createElement('option')
     listEle.value = container.id
-    listEle.innerHTML = container.cName
+    listEle.innerText = container.cName
     listEle.selected = true // set most recently created container to be the currently selected dropdown option
     selectLink.appendChild(listEle)
   })
@@ -252,14 +252,14 @@ function dropdownText() {
 
 // render containers and everything added to them
 function renderContainers() {
-  links.innerHTML = ''
+  links.innerText = ''
   saveContainer.forEach((container) => {
     const conItem = document.createElement('div')
     conItem.classList.add('conItem')
 
     const header = document.createElement('h2')
     header.classList.add('linkHeader')
-    header.innerHTML = `${container.cName}`
+    header.innerText = `${container.cName}`
 
     const unordered = document.createElement('ul')
 
@@ -329,7 +329,7 @@ function addTasks() {
 
 // render tasks under the goals section, allow tasks to be edited and deleted
 function renderTasks() {
-  tasks.innerHTML = ''
+  tasks.innerText = ''
   saveTask.forEach((task) => {
     const taskItem = document.createElement('div')
     taskItem.classList.add('taskItem')
